@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>Work with the Console</title>
+    </head>
+    <body>
+        <div class="slds-text-heading_large">Work with the Console:</div>
+        <div class="instructions">Please view the results in the console log.</div>
+
+        <script>
+            console.log('Begin Console demo');
+            debugger;
+            
+            let item1 = {
+                type: 'pen',
+                color: 'blue'
+            }
+            let item2 = {
+                type: 'pen',
+                color: 'red'
+            }
+            let items = [item1, item2];
+            console.log('This is a console.log message');
+            console.log('This is a console.log with extra parameter', item1);
+            console.warn('This is a console warning');
+            console.error('This is a console error');
+           
+            let verb = 'buy';
+            console.log('Would you like to %s a %s %s', verb, item1.color, item1.type)
+            console.log('Or would a %o be preferable', item2)
+            console.table(items);
+           
+            console.group('My Group')
+            console.log('This message is in the group');
+            console.log('This message is also in the group')
+            console.groupEnd();
+
+            function beginning() {
+                console.log("Inside of the beginning function ... let's do a stack trace");
+                console.trace();
+                middle();
+            }
+            function middle() {
+                console.log("Inside of the middle function ... let's do a stack trace");
+                console.trace();
+                end();
+            }
+            function end() {
+                console.log("Inside of the end function ... let's do a stack trace");
+                console.trace();
+            }
+            console.log("Let's do a stack trace before we call some nested functions");
+            console.trace();
+            beginning();
+            
+        </script>
+        <script  src="../../assetsExercises/demoHelper.js"></script>
+    </body>
+</html>

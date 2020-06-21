@@ -1,0 +1,55 @@
+<html>
+    <head>
+        <title>Event Handlers and Adding to the DOM</title>
+    </head>
+    <body>
+        <div class="slds-text-heading_large">Event Handlers and Adding to the DOM</div>
+        
+        <div class="instructions">Build your list of terms to remember by entering them one by one and clicking 'Add Term' or pressing the enter key.</div>
+
+        <div class="slds-box">
+            <div class="slds-text-heading_medium">Terms to Memorize</div>
+            <ol id="terms" class="slds-m-top_small slds-m-bottom_small">
+                <li>Account</li>
+            </ol>
+
+            <input type="text" name="term">
+            <button name="addTerm">Add Term</button>
+        </div>
+        
+        <script>
+            console.log('Begin Event Handlers demo');
+            debugger;
+            function initApp() {
+                const btn = document.querySelector('button[name="addTerm"]');
+                const termInput = document.querySelector('input[name="term"]');
+
+                function addTerm() {
+                    //IMPORTANT!!! in production code, the term should be sanitized to avoid XSS.
+                    const term = termInput.value.trim();
+                    if (term === '') {
+                        alert('Please enter a term');
+                    } else {
+                        let list = document.querySelector('ol#terms');
+                        let newItem = document.createElement('li');
+                        newItem.innerHTML=term;
+                        list.appendChild(newItem);
+                        termInput.value = '';
+                    }
+                }
+
+                btn.addEventListener('click', addTerm);
+                termInput.addEventListener('keyup', function (e) {
+                    if ( e.keyCode == 13 ) { //detect enter keypress
+                        //throw new Error('bad!');
+                        addTerm();
+                    }
+                });
+
+            }
+            document.addEventListener('DOMContentLoaded', initApp);
+        </script>
+        
+        <script src="../../assetsExercises/demoHelper.js"></script>
+    </body>
+</html>

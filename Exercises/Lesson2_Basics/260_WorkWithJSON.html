@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Work with JSON</title>
+    </head>
+    <body>
+        <div class="slds-text-heading_large">Work With JSON</div>
+        <div class="instructions">Please view the results in the console log.</div>
+        <script>
+            console.log('Begin Work with JSON demo');
+            debugger;
+            console.log('========== PARSE ONE OBJECT ==========')
+            let oneTermStr = `{
+                "term": "Metadata", 
+                "definition": "Information about the structure, appearance, and functionality of an organization and any of its parts. Lightning Platform uses XML to describe metadata."
+            }`;
+            let oneTermObj = JSON.parse(oneTermStr);
+            console.log('Term: ', oneTermObj.term);
+            console.log('Definition: ', oneTermObj.definition);
+            console.log('');
+
+            console.log('========== PARSE ARRAY OF OBJECTS ==========');
+            let arrayStr = `[{
+                "term": "Account", 
+                "definition": "An account is an organization, company, or consumer that you want to track—for example, a customer, partner, or competitor."
+            },{
+                "term":"Governor Limits",
+                "definition":"Apex execution limits that prevent developers who write inefficient code from monopolizing the resources of other Salesforce users."
+            }]`;
+            let termArray = JSON.parse(arrayStr);
+            console.log('Number of items in array: ', termArray.length);
+            console.log('');
+            termArray.forEach( termObj => {
+                console.log('Term: ' + termObj.term);
+                console.log('Definition: ' + termObj.definition);
+                console.log('');
+            });
+        </script>
+        <script  src="../../assetsExercises/demoHelper.js"></script>
+    </body>
+</html>

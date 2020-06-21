@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Async Await</title>
+    </head>
+    <body>
+        <div class="slds-text-heading_large">Async Await</div>
+        
+        <div class="instructions">Click the button to load a list of terms using fetch with Async Await.</div>
+
+        <div class="slds-box">
+            <div class="slds-text-heading_medium">Terms to Memorize</div>
+            <ol id="terms" class="slds-m-top_small slds-m-bottom_small">
+            </ol>
+            <button name="loadTerms">Load Terms</button>
+        </div>
+        
+        <script>
+            console.log('Begin Async Await demo');
+            debugger;
+            function initApp() {
+                //TODO: update this url
+                const dataUrl = 'https://raw.githubusercontent.com/sfdc-cdev/CRT-600/master/sampledata.json';
+                const btn = document.querySelector('button[name="loadTerms"]');
+                const listContainer = document.querySelector('ol#terms');
+                btn.addEventListener('click', loadTerms);
+                async function loadTerms() {
+                    try {
+                        let response= await fetch(dataUrl);
+                        let data = await response.json();
+                        let listItems = data.map(d => {
+                            return `<li>${d.term}</li>`;
+                        }).join('');
+                        listContainer.innerHTML = listItems;
+                    } catch (error) {
+                        console.error('Error in loadTerms', error);
+                    }
+                }
+            }
+            document.addEventListener('DOMContentLoaded', initApp);
+        </script>
+        
+        <script src="../../assetsExercises/demoHelper.js"></script>
+    </body>
+</html>

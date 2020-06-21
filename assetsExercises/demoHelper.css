@@ -1,0 +1,53 @@
+html { 
+    background: #FFF;
+}
+
+.instructions { 
+    font-weight: normal;
+    background-color: #f3f2f2;
+    max-width:75%;
+    font-size:1rem;
+    border:1px dotted black;
+    margin-top:1rem;
+    margin-bottom:1.5rem;
+    padding:1rem;
+}
+
+body {
+    margin:1rem;
+    font-size:1rem;
+}
+
+.demoSelector {
+    padding:.25rem;
+}
+ol { 
+    list-style: decimal;
+}
+li {
+    margin-left: 1rem;
+}
+
+.consoleOnPage::-webkit-input-placeholder{
+    color:#CCC !important;
+}
+  
+.consoleOnPage::-moz-placeholder{
+    color:#CCC !important;
+}
+  
+.consoleOnPage::-ms-input-placeholder{
+    color:#CCC !important;
+}
+  
+.consoleOnPage:::-ms-input-placeholder{
+    color:#CCC !important;
+}
+  
+.consoleOnPage:::placeholder{
+    color:#CCC !important;
+}
+.consoleOnPage {
+    background: black !important;
+    color: #CCC !important;
+}

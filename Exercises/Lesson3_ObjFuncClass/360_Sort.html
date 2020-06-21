@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <title>Sort</title>
+    </head>
+    <body>
+        <div class="slds-text-heading_large">Sort</div>
+        <div class="instructions">Please view the results in the console log.</div>
+        <script>
+            console.log('Begin Sort demo');
+            debugger;
+
+            const compareNumeric = function(a,b) {
+                if (a < b) return -1;
+                if (a > b) return 1;
+                return 0;
+            }
+
+            function compareCountry(a,b) {
+                if (a['country'] < b['country']) return -1;
+                if (a['country'] > b['country']) return 1;
+                return 0;
+            }
+            
+            const compareByProperty = function(prop) {
+                //observe the use of the prop value in a closure
+                return function(a,b) {
+                    if (a[prop] < b[prop]) return -1;
+                    if (a[prop] > b[prop]) return 1;
+                    return 0;
+                }
+            }
+
+            console.log('==========SORT NUMBERS==========');
+            let quantities = [30, 10, 8, 45];
+            quantities.sort(compareNumeric); 
+            console.log(quantities)
+
+            console.log('\n==========SORT BY PROPERTY==========');
+            let cities = [ 
+              { city: 'Milan', country: 'Italy'},  
+              { city: 'London', country: 'United Kingdom'},
+              { city: 'Paris', country: 'France'},
+              { city: 'New York',   country: 'United States', },
+            ];
+          
+            cities.sort(compareCountry); 
+            console.log('Sorted by country:', JSON.stringify(cities));
+            console.log('Sorted by country:', cities);
+
+            cities.sort(compareByProperty('city')); 
+            console.log('Sorted by city:', cities);
+
+        </script>
+        <script  src="../../assetsExercises/demoHelper.js"></script>
+    </body>
+</html>

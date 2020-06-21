@@ -1,0 +1,86 @@
+<html>
+    <head>
+        <title>Custom Events</title>
+        <style>
+            div.listener {
+                border: 1px dotted;
+                padding:1.5rem;
+                text-align: center;
+            }
+            #div1 { background-color:#CCC; }
+            #div2 { background-color:#DDD; }
+            #div3 { background-color:#EEE; }
+            #div4 { background-color:#FFF; }
+        </style>
+    </head>
+    <body>
+        
+        <div class="slds-text-heading_large">Custom Event Detail Info and Propagation</div>
+        <div class="instructions">
+            <ol>
+                <li>Click the button. It fires a custom event that is caught by div1, which alerts the stingified JSON object.</li>
+            </ol>
+        </div>
+
+        <textarea id="text1" readonly class="slds-textarea slds-m-bottom_x-small consoleOnPage" placeholder="Output will go here"></textarea>
+        
+        <div class="slds-m-bottom_x-small">
+            Stop Custom Event propagation at div 2 
+            <input type="checkbox" id="stopAtDiv2" >
+        </div>
+        <button onclick="clearText();" class="slds-m-bottom_x-small">Clear textarea</button>
+
+        
+        <div id="div1" class="listener">div1
+            <div id="div2" class="listener" >div2
+                <div id="div3" class="listener" >div3
+                    <div id="div4" class="listener" >
+                        div4<BR />
+                        <button id="btn1" class="listener">Click Here</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+       
+        <script>
+            console.log('Begin Custom Events demo');
+            debugger;
+            function clearText() {
+                document.getElementById('text1').value='';
+            }
+            function logIt(msg) {
+                document.getElementById('text1').value += msg + " ---> ";
+            }
+
+            function initApp() {
+               
+                const listeners = document.querySelectorAll('.listener');
+                let stopCheckbox = document.getElementById('stopAtDiv2');
+               
+                listeners.forEach(function(d) {
+                    d.addEventListener('hello', function(e) {
+                        let id = this.getAttribute('id');
+                        logIt(id + JSON.stringify(e.detail));
+                        if (id == 'div2' && stopCheckbox.checked) {
+                            e.stopPropagation();
+                        }
+                    });
+                })
+
+                let btn = document.getElementById('btn1');
+                btn.addEventListener('click', function(event) {
+                    let detailObj = { first: 'Trail', last:'Blazer' };
+                    let evt = new CustomEvent('hello', { 
+                        bubbles:true, 
+                        detail: detailObj
+                    });
+                    this.dispatchEvent(evt);
+                });
+            }
+            document.addEventListener('DOMContentLoaded', initApp);
+        </script>
+
+        <script  src="../../assetsExercises/demoHelper.js"></script>
+    </body>
+</html>

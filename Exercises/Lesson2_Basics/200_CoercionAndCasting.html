@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>Coercion and Casting</title>
+    </head>
+    <body>
+        <div class="slds-text-heading_large">Coercion and Casting:</div>
+        <div class="instructions">Please view the results in the console log.</div>
+
+        <script>
+            console.log('Begin Coercion and Casting demo');
+            debugger;
+            
+            console.log('==========IF EITHER SIDE OF A + OPERATOR IS A STRING, BOTH ARE TREATED AS STRINGS ==========');
+            let a1 = 250 + '100';  
+            console.log(a1);    
+            console.log(true + ' story');
+
+            console.log('==========IF EITHER SIDE OF A * or / OPERATOR IS A STRING, BOTH ARE TREATED AS NUMBERS ==========');
+            let a2 = 250 * '100';  
+            console.log(a2);    
+            a2 = 250 / '100';
+            console.log(a2); 
+
+            console.log('==========THE && AND || OPERATORS ARE A BIT DIFFERENT FROM SOME LANGUAGES ==========');
+            console.log('Astro' && 'Trailblazer'); 
+            console.log('Astro' || 'Trailblazer'); 
+            console.log(4 || false); 
+            console.log(4 && false); 
+            console.log(4 && true); 
+            console.log(true && 4); 
+            console.log(Boolean(4) || false); 
+
+            console.log('==========SOMETIMES PEOPLE USE DOUBLE NEGATION (!!) TO CONVERT TO BOOLEAN ==========');
+            let a3 = 10;
+            console.log(!!a3);
+            
+            console.log('\n==========CONVERT A STRING TO A NUMBER BEFORE ADDING ==========');
+            let a4 = 250 + Number("100");  
+            console.log(a4);     
+            
+            console.log('\n========== BE CAREFUL COMPARING NUMBERS THAT ARE STRINGS ==========');
+            console.log("20" > "100"); 
+            
+            console.log('\n========== CONVERT TO NUMBERS TO COMPARE SAFELY ==========');
+            console.log(Number("20") > Number("100")); 
+
+            console.log('\n==========BOXING ==========');
+            let a5 = new Number(200);
+            console.log(a5 == 200); 
+            console.log(a5 === 200); 
+            
+
+
+            
+        </script>
+        <script  src="../../assetsExercises/demoHelper.js"></script>
+    </body>
+</html>

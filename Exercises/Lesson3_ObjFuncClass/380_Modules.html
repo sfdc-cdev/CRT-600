@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <title>Work with Modules</title>
+    </head>
+    <body>
+        <div class="slds-text-heading_large">Work with Modules</div>
+        <div class="instructions">Please view the results in the console log.</div>
+
+        <script type="module" id='demoCode' > 
+            console.log('Begin Modules demo');
+            debugger;
+
+            import { TermDictionary } from "./380_Module_named.js";
+            const myDictionary = new TermDictionary();
+            myDictionary.addTerm('Astro', 'A famous Salesforce character');
+            myDictionary.addTerm('Account', 'A type of Standard object in Salesforce');
+            myDictionary.printTerms();
+            
+        </script>
+        <script  src="../../assetsExercises/demoHelper.js"></script>
+    </body>
+</html>

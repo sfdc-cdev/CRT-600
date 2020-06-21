@@ -1,0 +1,81 @@
+<html>
+    <head>
+        <title>Loops</title>
+    </head>
+    <body>
+        <div class="slds-text-heading_large">Loops</div>
+        <div class="instructions">Please view the results in the console log.</div>
+        <script>
+            console.log('Begin Loops demo');
+            debugger;
+
+            
+            let cities = ['London', 'Paris', 'New York', 'Madrid'];
+            console.log(cities); 
+
+            let citiesObj = {
+                city1: 'London',
+                city2: 'Paris',
+                city3: 'New York',
+                city4: 'Madrid'
+            }
+
+            //traditional for loops work like they do in other languages
+            console.log('==========for loop==========');
+            for(let i=0; i<cities.length; i++) {
+                cities[i] = cities[i].toUpperCase();
+            }
+            console.log(cities);
+
+            //for .. in loops are helpful for looping over the enumerable keys of an object, including the inherited ones
+            console.log('\n==========for..in==========');
+            for (let x in cities) {	
+                console.log(`cities array: ${x} => ${cities[x]}`);
+            }
+            for (let x in citiesObj) {	
+                console.log(`cities object: ${x} => ${citiesObj[x]}`);
+            }
+
+            //for .. of loops require that the object be an iterable, such as Arrays, Strings, or any objects that implement the iterable protocol
+            console.log('\n==========for..of==========');
+            for (let x of cities) {	
+                console.log(x);
+            }
+
+            //forEach works on arrays and some other types of lists, like NodeList. You can pass anonymous or named functions
+            console.log('\n==========forEach with anonymous function==========');
+            cities.forEach(function(city) {
+                console.log(city);
+            })
+
+            function logCityLowercase(str) {
+                console.log(str.toLowerCase());
+            }
+            console.log('\n==========forEach with named function==========');
+            cities.forEach(logCityLowercase);
+
+            //while loop. Note that the break and continue keywords work in standard JavaScript loops but not forEach
+            console.log('\n==========while loop==========');
+            let i=0;
+            while (i < cities.length) {
+                i++;
+                if (i === 0) {
+                    continue;
+                } else if (i === 3) {
+                    break;
+                }
+                console.log(cities[i]);
+            }
+
+            //do-while loop
+            i = cities.length-1;
+            console.log('\n==========do..while loop==========');
+            do {
+                console.log(cities[i]);
+                i--;
+            } while (i >= 0);
+            
+        </script>
+        <script  src="../../assetsExercises/demoHelper.js"></script>
+    </body>
+</html>

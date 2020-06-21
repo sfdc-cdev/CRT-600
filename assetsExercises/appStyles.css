@@ -1,0 +1,21 @@
+.centerMe {
+    margin: auto;
+}
+
+td[role="gridcell"] {
+    white-space: normal;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+div.term {
+    font-weight: bold;
+    font-size:1rem;
+}
+.astro {
+    width:40px; 
+    height:auto; 
+    float:left;
+}
+textarea[name="localStorageTerms"] {
+    height:200px;
+}

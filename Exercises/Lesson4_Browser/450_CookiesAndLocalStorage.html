@@ -1,0 +1,161 @@
+<html>
+    <head>
+        <title>Cookies and Local Storage</title>
+        <style>
+            #terms li a {
+                margin-left:2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="slds-text-heading_large">Local Storage and Cookies</div>
+        
+        <div class="instructions">
+            <ol>
+                <li>A cookie will show a confirmation dialog until you accept it. </li>
+                <li>You can save and load terms from local storage. Loading will wipe out existing terms.</li>
+            </ol>
+        </div>
+
+        <div class="slds-box slds-m-bottom_small">
+            <div class="slds-text-heading_medium">Terms to Memorize</div>
+            <ol id="terms" class="slds-m-top_small slds-m-bottom_small">
+            </ol>
+
+            <input type="text" name="term">
+            <button name="addTerm">Add Term</button>
+        </div>
+        
+        <div class="slds-box slds-m-bottom_small">
+            <div class="slds-text-heading_medium">Local Storage</div>
+                <textarea name="localStorageTerms" readonly class="slds-textarea slds-m-bottom_small slds-m-top_small consoleOnPage" placeholder="Contents of Local Storage here"></textarea>
+                
+                <button name="loadLocalStorage" type="button" class="slds-button slds-button_brand">
+                    Load Terms
+                </button>
+                <button name="clearLocalStorage" type="button" class="slds-button slds-button_destructive">
+                    Clear Storage
+                </button>
+                <button name="saveLocalStorage" type="button" class="slds-button slds-button_success">
+                    Save Terms
+                </button>
+            </div>
+        </div>
+
+        <div class="slds-box slds-m-bottom_small">
+            <div class="slds-text-heading_medium">Cookies</div>
+            <button name="clearAcceptanceCookie" type="button" class="slds-m-top_small slds-button slds-button_destructive">
+                Clear Acceptance Cookie
+            </button>
+        </div>
+
+        <script>
+            console.log('Begin Cookies and Local Storage demo');
+            debugger;
+            function initApp() {
+                const btn = document.querySelector('button[name="addTerm"]');
+                const termInput = document.querySelector('input[name="term"]');
+                
+                //capture a click anywhere in the ordered list element but only process it if it's an anchor
+                document.querySelector('ol#terms').addEventListener('click', function(event) {
+                    if (event.target.tagName.toLowerCase() === 'a') {
+                        let listItem = event.target.closest('li');
+                        listItem.remove();
+                    } else {
+                        console.log('ignoring click on ', event.target.tagName.toLowerCase());
+                    }
+                });
+
+                function addTerm() {
+                    const term = termInput.value.trim();
+                    //IMPORTANT!!! in production code, the term should be sanitized to avoid XSS.
+                    if (term === '') {
+                        alert('Please enter a term');
+                    } else {
+                        let list = document.querySelector('ol#terms');
+                        let newItem = document.createElement('li');
+                        let termLink = `<span>${term}</span><a href="#">DELETE</a>`;
+                        newItem.innerHTML=termLink;
+                        list.appendChild(newItem);
+                        termInput.value = '';
+                    }
+                }
+
+                btn.addEventListener('click', addTerm);
+                termInput.addEventListener('keyup', function(e) {
+                    if ( e.keyCode == 13 ) { //detect enter keypress
+                        addTerm();
+                    }
+                });
+
+                /*************LOCAL STORAGE CODE ********************/
+                function displayLocalStorage() {
+                    let displayValue = 'Local storage is currently empty.';
+                
+                    const savedTerms = localStorage.getItem('savedTermData');
+                    if (savedTerms && savedTerms.length > 2) {
+                        displayValue = savedTerms;
+                    } 
+                    document.querySelector("textarea[name='localStorageTerms']").value=displayValue;
+                }
+
+                document.querySelector("button[name='loadLocalStorage']").addEventListener('click', function() {
+                    const savedTerms = localStorage.getItem("savedTermData");
+                    if (savedTerms) {
+                        let terms = JSON.parse(savedTerms);
+
+                        let listItemsArray = terms.map(function(term) {
+                            return `<li><span>${term}</span><a href="#">DELETE</a></li>`;
+                        });
+                        let listItemsStr=listItemsArray.join('');
+    
+                        document.querySelector('ol#terms').innerHTML = listItemsStr;
+
+                    } else {
+                        alert('No terms found in local storage');
+                    }
+                });
+
+                document.querySelector("button[name='clearLocalStorage']").addEventListener('click', function() {
+                    localStorage.removeItem("savedTermData");
+                    displayLocalStorage();
+                    alert('local storage cleared');
+                });
+                
+                document.querySelector("button[name='saveLocalStorage']").addEventListener('click', function() {
+                    
+                    let terms = Array.from(document.querySelectorAll('ol#terms li span')).map(function(el) {
+                        return el.innerHTML;
+                    });
+                    localStorage.setItem("savedTermData", JSON.stringify(terms));
+
+                    displayLocalStorage();
+                    alert('Terms saved to local storage');
+                });
+
+                displayLocalStorage();
+                /*************END STORAGE CODE ********************/
+
+                /*************COOKIE CODE ********************/
+                function checkCookie() {
+                    if (!document.cookie.includes('termsAndConditions=true')) {
+                        if (confirm('Do you accept the terms and conditions?')) {
+                            document.cookie = 'termsAndConditions=true';
+                        }
+                    }
+                }
+                checkCookie();
+
+                document.querySelector("button[name='clearAcceptanceCookie']").addEventListener('click', function() {
+                    document.cookie = "termsAndConditions=; expires=Thu, 01 Jan 1970 00:00:00 UTC;";
+                    alert('Cookie cleared. Reload page to test')
+                });
+                /*************END COOKIE CODE ********************/
+
+            }
+            document.addEventListener('DOMContentLoaded', initApp);
+        </script>
+        
+        <script src="../../assetsExercises/demoHelper.js"></script>
+    </body>
+</html>

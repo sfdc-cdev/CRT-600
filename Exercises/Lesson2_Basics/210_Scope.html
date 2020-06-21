@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <title>Scope</title>
+    </head>
+    <body>
+        <div class="slds-text-heading_large">Scope:</div>
+        <div class="instructions">Please view the results in the console log.</div>
+
+        <script>
+            console.log('Begin Scope demo');
+            debugger;
+            console.log('==========DECLARATION==========');
+            
+            // Variables declared with var outside of a function are placed on the global scope.
+            // In the browser, the global scope is the window object.
+            var a1 = 5;
+            console.log('a1 is', a1);
+            console.log('window.a1 is', window.a1); 
+
+            {
+                // inside of a block, we can access global variables as well as block scoped variables
+                
+                a1 = 6;         // a1 is an existing globally scoped variable that we are updating within the block
+                                // our change will persist outside of the block
+                
+                var a2 = 7;     // a2 is a new globally scoped variable that we are declaring inside the block.
+                                // a2 will be available outside of the block
+
+                let a3 = 8;     // a3 is block scoped and will not be available outside of the block
+
+                console.log('\n==========INSIDE BLOCK==========');
+                console.log('values of a1, a2, a3 are: ', a1,  a2, a3); 
+            }
+
+            
+            console.log('\n==========OUTSIDE BLOCK==========');            
+            
+            // the change to a1 persists
+            // even though a2 was created inside of a block, we can access it here because it is global
+            console.log('values of a1, a2 are:', a1, a2);  
+
+            //because a3 was declared with let, it was block scoped and not available outside of the block
+            try {
+                console.log('a3 is', a3);
+            } catch (e) {
+                console.error('Error accessing a3 outside block: ', e);
+            }
+            
+            //when we define a keyword with let here, the scope displays as "Script" and it is not available on the window object
+            let a4 = 10;
+            console.log('a4 is', a4);
+
+            //if we try to access a4 on the window, we will get a value of undefined because it was declared with let
+            console.log('window.a4 is', window.a4); 
+           
+
+            console.log('\n==========FOR LOOPS WITH VAR AND LET ==========');
+
+            //loop variables declared with var are still available after the loop finishes
+            for (var a5=0; a5 < 2; a5++) {
+                console.log('loop1 output ', a5);
+            }
+            console.log('after loop, a5 is', a5);
+
+            //loop variables declared with let are scoped to the loop and are not available after the loop finishes
+            for (let a6=0; a6 < 2; a6++) {
+                console.log('loop2 output ', a6);
+            }
+            try {
+                console.log('after loop, a6 is', a6);
+            } catch (e) {
+                console.error('Error accessing a6 outside if statement: ', e);
+            }
+
+            console.log('\n==========FUNCTION SCOPE ==========');
+
+            function createAndOutputNums() {
+                // variables declared with var inside of a function can be accessed inside the function
+                // even if they were declared inside of a block 
+                var a7 = 'Function variable';
+                if (true) {
+                    var a8 = '||Function variable declared inside block||';
+                }
+                console.log('Accessing function scoped variables inside the function:      ', a7, a8);
+
+            }
+            createAndOutputNums();
+
+            // variables declared with var inside of a function cannot be accessed outside the function
+            // so we will catch an error here
+            try {
+                console.log(a7);
+            } catch (e) {
+                console.error('Error accessing variable a7 declared in createAndOutputNums: ', e);
+            }
+            
+            var a9 = 'My value was set outside and will change';
+            var a9_redeclared = 'My value was set outside and will not change';
+
+            function changeNums() {
+
+                // global variables are accessible and modifiable inside of functions. 
+                // Let's read the current value of the global variable
+                console.log('Accessing a9 inside the changeNums function: ', a9);
+
+                //Now let's change the two a9 variables. We will examine the results of the change outside the function.
+                a9 = 'My value was changed inside the function';
+                var a9_redeclared = 'My value was changed inside the function';
+            }
+            changeNums();
+
+            //the change to a9 persists
+            //the change to a9_redeclared does not persist because it had been redeclared inside the function
+            console.log('After the function call, a9 is: ', a9);
+            console.log('After the function call, a9_redeclared is: ', a9_redeclared);
+
+            
+
+          
+            
+        </script>
+       
+        <script  src="../../assetsExercises/demoHelper.js"></script>
+    </body>
+</html>

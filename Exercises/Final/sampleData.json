@@ -1,0 +1,34 @@
+[
+    {
+        "term": "Account", 
+        "definition": "An account is an organization, company, or consumer that you want to track—for example, a customer, partner, or competitor."
+    },
+    {
+        "term": "Flow",
+        "definition": "A flow is an application that can execute logic, interact with the Salesforce database, call Apex classes, and collect data from users. You can build flows by using the Cloud Flow Designer."
+    },
+    {
+        "term":"Formula Field",
+        "definition":"A type of custom field. Formula fields automatically calculate their values based on the values of merge fields, expressions, or other values."
+    },
+    {
+        "term":"Governor Limits",
+        "definition":"Apex execution limits that prevent developers who write inefficient code from monopolizing the resources of other Salesforce users."
+    },
+    {
+      "term": "Metadata", 
+      "definition": "Information about the structure, appearance, and functionality of an organization and any of its parts. Lightning Platform uses XML to describe metadata."
+    },
+    {
+      "term": "Opportunities", 
+      "definition": "Opportunities track your sales and pending deals."
+    },
+    {
+      "term": "Record", 
+      "definition": "A single instance of a Salesforce object. For example, John Jones might be the name of a contact record."
+    },
+    {
+      "term": "REST API", 
+      "definition": "A Web services application programming interface that uses REST to provide access to your Salesforce organization's information."
+    }
+]

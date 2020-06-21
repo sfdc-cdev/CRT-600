@@ -1,0 +1,85 @@
+<html>
+    <head>
+        <title>Work With Strings</title>
+    </head>
+    <body>
+        <div class="slds-text-heading_large">Work With Strings</div>
+        <div class="instructions">Please view the results in the console log.</div>
+
+        <script>
+            console.log('Begin Work with Strings demo');
+            debugger;
+            console.log('==========DECLARE BASIC STRINGS==========');
+            const city = 'Washington'
+            const mascot = 'Wizards';
+            console.log('city', city);
+            console.log('mascot', mascot);
+
+            debugger;
+            console.log('\n==========CONCATENATE 3 WAYS==========');
+            const team1 = city + ' ' + mascot;
+            const team2 = city.concat(' ', mascot);
+            const team3 = `${city} ${mascot}`;
+            console.log('fullName1', team1);
+            console.log('fullName2', team2);
+            console.log('fullName3', team3);
+
+            debugger;
+            console.log('\n==========EQUALITY CHECKS==========');
+            const x = 'Astro';
+            const y =  'Cody';
+            const z = 'As' + 'tro';
+            console.log(x === y); 
+            console.log(x === "Astro"); 
+            console.log(x === z); 
+
+            debugger;
+            console.log('\n==========SEARCH FOR STRINGS==========');
+            const phrase = 'big red house';
+            
+            //search using .indexOf
+            console.log(phrase.indexOf('red')); 
+            console.log(phrase.indexOf('blue')); 
+
+            //search using .includes
+            console.log(phrase.includes('big red')); 
+
+            //search using .search
+            console.log(phrase.search(/red/)); 
+            console.log(phrase.search(/blue/)); 
+
+
+            debugger;
+            console.log('\n==========SPLIT A STRING==========');
+            const names = 'Michael|Scottie|John|Bill|Steve';
+            const namesArray = names.split('|');
+            console.log(`namesArray length is ${namesArray.length}`);
+
+            debugger;
+            console.log('\n==========PADDING STRINGS==========');
+            const phrase2 = '12345';
+            console.log(phrase2.padStart(10, '0'));  
+            console.log(phrase2.padStart(10, 'ab'));   
+
+            console.log(phrase2.padEnd(10,'0'));    
+            console.log(phrase2.padEnd(10, 'ab'));  
+
+            debugger;
+            console.log('\n==========EXTRACT A SUBSTRING==========');
+            const phrase3 = 'Named Credential';
+            const substring1 = phrase3.substr(6, 4);
+            const substring2 = phrase3.substring(6, 10);
+            console.assert((substring1 === 'Cred') && (substring1 === substring2));
+
+            debugger;
+            console.log('\n==========TRIM STRINGS==========');
+            const phrase4 = '    How are you doing?       ';
+            console.log(phrase4.trimStart());  
+            console.log(phrase4.trimEnd()); 
+            console.log(phrase4.trim()); 
+
+            debugger;
+        </script>
+        <script  src="../../assetsExercises/demoHelper.js"></script>
+    </body>
+</html>

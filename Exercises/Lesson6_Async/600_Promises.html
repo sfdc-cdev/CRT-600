@@ -1,0 +1,168 @@
+<html>
+    <head>
+        <title>Promises</title>
+    </head>
+    <body>
+        <div class="slds-text-heading_large">Promises</div>
+        
+        <div class="instructions">
+            Explore fetch(), Promise.all(), Promise.allSettled(), and Promise.race() using the buttons below.<BR />
+            <ul style="list-style-type:disc;">
+                <li>For Promise.all(), Promise.allSettled(), and Promise.race() you'll have to look in the console for results.</li>
+                <li>Toggle the value of forceErrors in the code to see how Promise.allSettled() responds differently than Promise.all().</li>
+            </ul>
+        </div>
+
+        <div class="slds-box slds-m-bottom_medium">
+            <div class="slds-text-heading_medium">Testing Promises</div>
+            <div class="slds-m-top_small slds-m-bottom_small">
+                Force errors to occur
+                <input type="checkbox" id="forceErrors" >
+            </div>
+            <button name="singlePromiseChain">Single Promise Chain</button>
+            <button name="promiseAll">Promise All</button>
+            <button name="promiseAllSettled">Promise All Settled</button>
+            <button name="promiseRace">Promise Race</button>
+        </div>
+        <div class="slds-box">
+            <div class="slds-text-heading_medium">Terms to Memorize</div>
+            
+            <ol id="terms" class="slds-m-top_small slds-m-bottom_small">
+            </ol>
+        </div>
+        
+        <script>
+            console.log('Begin Promises demo');
+            debugger;
+            
+            function initApp() {
+
+                // ***** HOW TO USE THIS DEMO *****
+                // The 'Single Promise Chain' button will load our terms and visually place them in an ordered list
+                // using a single fetch call
+                
+                // The Promise All, Promise All Settled, and Promise Race buttons demonstrate those different functionalities
+                // but you will need to examine the console for the results
+
+                // toggle the force Errors checkbox to force a bad URL to occur, and pay attention to how Promise.allSettled handles promise rejections differently
+
+                let termsUrl = 'https://raw.githubusercontent.com/sfdc-cdev/CRT-600/master/sampledata.json';
+                
+                const siteAnalyticsURL= 'https://lwcdata.herokuapp.com/jsondata';
+                    
+                const btnsinglePromiseChain = document.querySelector('button[name="singlePromiseChain"]');
+                const btnPromiseAll = document.querySelector('button[name="promiseAll"]');
+                const btnPromiseAllSettled = document.querySelector('button[name="promiseAllSettled"]');
+                const btnPromiseRace = document.querySelector('button[name="promiseRace"]');
+                const listContainer = document.querySelector('ol#terms');
+
+                btnsinglePromiseChain.addEventListener('click', singlePromiseChain);
+                btnPromiseAll.addEventListener('click',function() { loadManyWebsites('all')});
+                btnPromiseAllSettled.addEventListener('click',function() { loadManyWebsites('allSettled')});
+                btnPromiseRace.addEventListener('click',runTheRace);
+
+                const forceErrorsCheckbox = document.getElementById('forceErrors');
+
+                
+                function singlePromiseChain() {
+                    // this is a standard promise chain that updates the UI after the data is successfully returned.
+                    let targetUrl = (forceErrorsCheckbox.checked) ? termsUrl.replace('.json', 'doesNotExist.json') : termsUrl;
+                    
+                    fetch(targetUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        let listItems = data.map(d => {
+                            return `<li>${d.term}</li>`;
+                        }).join('');
+                        listContainer.innerHTML = listItems;
+                    })
+                    .catch(error => {
+                        console.error(`Error loading terms: ${error}`);
+                    })
+                }
+                
+                function fetchJSON(url) {
+                    // helper function that fetches a URL and parses it as JSON
+                    return fetch(url).then(response => response.json())
+                }
+
+                function chillOut(howLongToChill) {
+                    // helper function that returns a promise that resolves after the passed in milliseconds
+                    let p = new Promise( function(resolve, reject) {
+                        setTimeout(resolve, howLongToChill, `I chilled for ${howLongToChill}ms`);
+                    });
+                    return p;
+                }
+                
+                function loadManyWebsites(mode) {
+                    // mode will be 'all' or 'allSettled' depending on which of the two buttons was pressed
+
+                    let p1Url = (forceErrorsCheckbox.checked) ? termsUrl.replace('.json', 'doesNotExist.json') : termsUrl;
+
+                    let p1 = fetchJSON(p1Url);
+                    let p2 = fetchJSON(siteAnalyticsURL);
+
+                    let chillTime = 1500; 
+                    let p3 = chillOut(chillTime);
+                    
+                    if (mode === 'all') {
+                        
+                        // ***** Promise.all *****
+                        // Promise.all finishes once all 3 promises resolve or one promise rejects. 
+
+                        Promise.all([p1,p2,p3])
+                            .then( function(arrayOfJSONResults) {
+                                //returns the results querying both sites
+                                console.log(arrayOfJSONResults);
+                            })
+                            .catch(error => {
+                                console.error(`Error caught in Promise.all: ${error}`);
+                            });
+                            
+                    } else if (mode === 'allSettled') {
+
+                        // ***** Promise.allSettled *****
+                        // Promise.allSettled finishes once all 3 either resolve or reject
+                        // the array will contain a status that says 'fulfilled' or 'rejected'
+                        
+                        Promise.allSettled([p1,p2,p3])
+                            .then( function(arrayOfJSONResults) {
+                                console.log(arrayOfJSONResults);
+                            })
+                            .catch(error => {
+                                alert(`Error caught in Promise.allSettled: ${error}`);
+                            });
+                    }
+                }
+
+               
+                function runTheRace() {
+
+                    // ***** Promise.race *****
+                    // Promise.race settles as soon as any of the passed promises settle (fulfill or reject)
+                    let p1Url = (forceErrorsCheckbox.checked) ? termsUrl.replace('.json', 'doesNotExist.json') : termsUrl;
+
+                    let p1 = fetchJSON(p1Url);
+                    let chillTime = 20;
+                    let p2 = chillOut(chillTime);
+                    
+                    // Change the hardcoded value of chillTime OR throttle your network speed
+                    // to force either promise to finish first.
+
+                    Promise.race([p1,p2]).then( function(val) {
+                        console.log(val);
+                    }).catch(error => {
+                        console.error(`Error caught in Promise.race: ${error}`);
+                    });
+                }
+
+                
+            }
+
+
+            document.addEventListener('DOMContentLoaded', initApp);
+        </script>
+        
+        <script src="../../assetsExercises/demoHelper.js"></script>
+    </body>
+</html>

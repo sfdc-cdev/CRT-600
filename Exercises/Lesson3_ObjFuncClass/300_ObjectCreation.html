@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <title>Object Creation</title>
+    </head>
+    <body>
+        <div class="slds-text-heading_large">Object Creation</div>
+        <div class="instructions">Please view the results in the console log.</div>
+        <script>
+            console.log('Begin Object Creation demo');
+            debugger;
+            console.log('==========CREATE OBJECTS WITH LITERALS==========');
+
+            //create a term with a literal
+            let term1 = {
+                term: 'Astro',
+                description: 'A famous Salesforce character'
+            }
+            console.log('term1', term1);
+
+            //Use a literal in a factory function
+            function createTerm(term,description) {
+                return {
+                    term:term,
+                    description
+                }
+            }
+            let term2 = createTerm('Astro', 'A famous Salesforce character');
+            console.log('term2', term2);
+
+            console.log('==========OBJECT ASSIGNMENT DOES NOT CREATE A COPY==========');
+            //object assignments create references, not copies
+            let term3 = term1; 
+            console.log('term3', term3);
+
+            console.log('does term1 == term2?', (term1 == term2));
+            console.log('does term1 === term2?', (term1 === term2));
+            console.log('does term3 === term1?', (term1 === term3));
+
+            console.log('==========CREATE OBJECTS THE "NEW" OPERATOR==========');
+
+            function Term (term, description){
+                this.term = term;
+                this.description = description;
+            }
+            let term4 = new Term('Astro', 'A famous Salesforce character');
+            console.log('term4', term4);
+            let term5 = Term('Astro', 'A famous Salesforce character');
+            console.log('term5 (forgot the new keywored!)', term5);
+
+            console.log('==========CREATE OBJECT USING OBJECT.CREATE AND NULL PROTOTYPE==========');
+            //setting null for the prototype means you cannot access typical Object instance methods like toString()
+            
+            let objectNoPrototype = Object.create(null);
+            try {
+                let objStr2 = objectNoPrototype.toString();
+            } catch (ex) {
+                console.error(`Error: ${ex.message}`);
+            }
+
+            console.log('==========CREATE AN OBJECT WITH A PROTOTYPE==========');
+            let Product = function() {}
+            Product.prototype.print = function() {
+                console.log('I am a product');
+            }
+            let p = Object.create(Product.prototype);
+            Product.prototype.something = "hello";
+            p.print();
+            console.log('Is Product prototype in the prototype chain of p? ' + Product.prototype.isPrototypeOf(p));
+
+
+            
+        </script>
+        <script  src="../../assetsExercises/demoHelper.js"></script>
+    </body>
+</html>

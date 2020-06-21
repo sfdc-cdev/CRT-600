@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Value and Reference</title>
+    </head>
+    <body>
+        <div class="slds-text-heading_large">Value and Reference</div>
+        <div class="instructions">Please view the results in the console log.</div>
+        <script>
+            console.log('Begin Value and Reference demo');
+            debugger;
+            
+            console.log('==========PRIMITIVE ASSIGNMENT==========');
+            let a = "Hello";
+            let b = a;
+            b = "World";
+            console.log(a + ' ' + b)
+            
+            console.log('\n==========OBJECT ASSIGNMENT==========');
+            let o1 = { 
+                'term': 'Astro',
+                'description': 'A famous Salesforce character'
+            }
+            
+            let o2 = o1;
+            o2.description = 'Will the description of both objects change?';
+            console.log(`o1 description is ${o1.description}`);
+            console.log(`o2 description is ${o2.description}`);
+
+            console.log('\n==========CHANGE OBJECT IN FUNCTION ==========');
+            function changeProperty(obj, prop, newVal) {
+                obj[prop] = newVal;
+            }
+            let o3 = { 
+                'term': 'Astro',
+                'description': 'A famous Salesforce character'
+            }
+            changeProperty(o3, 'term', 'Joe');
+            console.log(`After change, o3 term is ${o3.term}`);
+ 
+            
+        </script>
+        <script  src="../../assetsExercises/demoHelper.js"></script>
+    </body>
+</html>
