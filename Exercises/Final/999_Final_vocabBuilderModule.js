@@ -1,6 +1,6 @@
 /***** NOTE: The final Project isn't core to studying for the exam *****/
 
-const initialDataURL = 'https://raw.githubusercontent.com/jflowers45/sampledata/master/sampledata6.json';
+const initialDataURL = 'https://raw.githubusercontent.com/sfdc-cdev/CRT-600/master/assetsExercises/sampleData.json';
 
 // idFactory demonstrates closures
 // also, idFactory is private because it's never exported.
