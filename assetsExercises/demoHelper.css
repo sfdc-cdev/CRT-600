@@ -24,7 +24,7 @@ body {
 ol { 
     list-style: decimal;
 }
-li {
+ol,li {
     margin-left: 1rem;
 }
 
