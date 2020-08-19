@@ -1,4 +1,4 @@
-// From command line: node Exercises/Lesson7_Node/700_NodeWebServer.js
+// From command line: node Exercises/Lesson7_Node/710_NodeWebServer.js
 // then browse to http://localhost:8080/
 
 const http = require('http');  
