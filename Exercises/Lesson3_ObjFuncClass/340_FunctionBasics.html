@@ -1,35 +1,34 @@
 <html>
-    <head>
-        <title>Function Basics</title>
-    </head>
-    <body>
-        <div class="slds-text-heading_large">Function Basics</div>
-        <div class="instructions">Please view the results in the console log.</div>
-        <script>
-            console.log('Functions Basics demo');
+	<head>
+		<title>Function Basics</title>
+	</head>
+	<body>
+		<div class="slds-text-heading_large">Function Basics</div>
+		<div class="instructions">Please view the results in the console log.</div>
+		<script>
+			console.log("Functions Basics demo");
 
-            debugger;
+			debugger;
 
-            console.log('==========FUNCTION DECLARATIONS ARE HOISTED==========');
-            getRandomCity(['London','Washington D.C.', 'Toronto']); 
-            function getRandomCity(cities) {
-                let randomIndex = Math.floor(Math.random() * cities.length);
-                return cities[randomIndex];
-            }
+			console.log("==========FUNCTION DECLARATIONS ARE HOISTED==========");
+			getRandomCity(["London", "Washington D.C.", "Toronto"]);
+			function getRandomCity(cities) {
+				let randomIndex = Math.floor(Math.random() * cities.length);
+				return cities[randomIndex];
+			}
 
-            console.log('\n==========FUNCTION EXPRESSIONS ARE NOT HOISTED==========');
-            try {
-                getFirstItem(['Accounts', 'Contacts', 'Opportunities']);
-            } catch (ex) {
-                console.error(`Error calling unhoisted function expression: ${ex}`);
-            }
+			console.log("\n==========FUNCTION EXPRESSIONS ARE NOT HOISTED==========");
+			try {
+				getFirstItem(["Accounts", "Contacts", "Opportunities"]);
+			} catch (ex) {
+				console.error(`Error calling unhoisted function expression: ${ex}`);
+			}
 
-            getFirstItem = function(items) {
-                return (items.length > 0) ? items[0] : null;
-            }
-            console.log('calling after function expression: ' + getFirstItem(['Accounts', 'Contacts', 'Opportunities']));
-            
-        </script>
-        <script  src="../../assetsExercises/demoHelper.js"></script>
-    </body>
+			getFirstItem = function (items) {
+				return items.length > 0 ? items[0] : null;
+			};
+			console.log("calling after function expression: " + getFirstItem(["Accounts", "Contacts", "Opportunities"]));
+		</script>
+		<script src="../../assetsExercises/demoHelper.js"></script>
+	</body>
 </html>

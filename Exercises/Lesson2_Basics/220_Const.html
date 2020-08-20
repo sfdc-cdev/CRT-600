@@ -1,54 +1,52 @@
 <html>
-    <head>
-        <title>Const</title>
-    </head>
-    <body>
-        <div class="slds-text-heading_large">Const:</div>
-        <div class="instructions">Please view the results in the console log.</div>
+	<head>
+		<title>Const</title>
+	</head>
+	<body>
+		<div class="slds-text-heading_large">Const:</div>
+		<div class="instructions">Please view the results in the console log.</div>
 
-        <script>
-            console.log('Begin Const demo');
-            debugger;
+		<script>
+			console.log("Begin Const demo");
+			debugger;
 
-            //Failing to initialize a const will result in an uncatchable error
-            //const a0; 
+			//Failing to initialize a const will result in an uncatchable error
+			//const a0;
 
-            console.log('==========Attempt CONST Reassignment ==========');
-            const a1 = 1;
-            const a2 = {
-                term: "Astro",
-                description: "A famous Salesforce character"
-            }
+			console.log("==========Attempt CONST Reassignment ==========");
+			const a1 = 1;
+			const a2 = {
+				term: "Astro",
+				description: "A famous Salesforce character",
+			};
 
-            
-            try {
-                //consts cannot be reassigned, so this will fail and the catch block will execute
-                a1 = 4;
-            } catch (e) {
-                console.error(`Error reassigning a1: ${e}`);
-            }
+			try {
+				//consts cannot be reassigned, so this will fail and the catch block will execute
+				a1 = 4;
+			} catch (e) {
+				console.error(`Error reassigning a1: ${e}`);
+			}
 
-            console.log('\n==========Attempt CONST Mutation ==========');
+			console.log("\n==========Attempt CONST Mutation ==========");
 
-            //const can be mutated in place, so this will work fine
-            a2.term = "Cody";
-            console.log(a2);
+			//const can be mutated in place, so this will work fine
+			a2.term = "Cody";
+			console.log(a2);
 
-            console.log('\n==========Declare CONST inside of a block, access outside block ==========');
-            {
-               const a3 = "Hello";
-               console.log(a3); 
-            }
+			console.log("\n==========Declare CONST inside of a block, access outside block ==========");
+			{
+				const a3 = "Hello";
+				console.log(a3);
+			}
 
-            try {
-                //consts are block scoped, so you cannot access them outside of the block in which they were declared
-                //thus this will fail and the catch block will execute
-                console.log(a3);
-            } catch (e) {
-                console.error(`Error accessing a3: ${e}`);
-            }
-
-        </script>
-        <script  src="../../assetsExercises/demoHelper.js"></script>
-    </body>
+			try {
+				//consts are block scoped, so you cannot access them outside of the block in which they were declared
+				//thus this will fail and the catch block will execute
+				console.log(a3);
+			} catch (e) {
+				console.error(`Error accessing a3: ${e}`);
+			}
+		</script>
+		<script src="../../assetsExercises/demoHelper.js"></script>
+	</body>
 </html>

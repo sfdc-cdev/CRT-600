@@ -1,63 +1,61 @@
 <html>
-    <head>
-        <title>Map and Filter</title>
-    </head>
-    <body>
-        <div class="slds-text-heading_large">Map and Filter</div>
-        <div class="instructions">Please view the results in the console log.</div>
-        
-        <script>
-            console.log('Begin Map and Filter demo');
-            debugger;
-            
-            console.log('========== USING MAP TO TRANSFORM DATA ==========')
-            let cities = [ 
-                { 
-                    id: 'a04P0000005BUYRIA4', 
-                    City__r: {
-                        Name: 'Milan'
-                    },
-                },
-                { 
-                    id: '003P000001LmKxHIAV', 
-                    City__r: {
-                        Name: 'London'
-                    },
-                },
-                { 
-                    id: '003P000001LmKxHWFR', 
-                    City__r: {
-                        Name: 'Paris'
-                    },
-                },
-                { 
-                    id: '003P000001LmKxHIZZ', 
-                    City__r: {
-                        Name: 'New York'
-                    },
-                }
-            ];
-          
-            console.log(cities);
-            let selectOptions = cities.map( function(item) {
-                console.log(item);
-                console.log(item.City__r);
-                return {
-                    value:item.id,
-                    label: item.City__r.Name  
-                }
-            });
-            console.log(selectOptions);
+	<head>
+		<title>Map and Filter</title>
+	</head>
+	<body>
+		<div class="slds-text-heading_large">Map and Filter</div>
+		<div class="instructions">Please view the results in the console log.</div>
 
-            console.log('/n========== USING FILTER ==========')
-            let filteredSelectOptions = selectOptions.filter(function(item) {
-                return (item.label.toLowerCase().includes('a'));
-            });
-            
-            console.log(filteredSelectOptions);
-          
+		<script>
+			console.log("Begin Map and Filter demo");
+			debugger;
 
-        </script>
-        <script  src="../../assetsExercises/demoHelper.js"></script>
-    </body>
+			console.log("========== USING MAP TO TRANSFORM DATA ==========");
+			let cities = [
+				{
+					id: "a04P0000005BUYRIA4",
+					City__r: {
+						Name: "Milan",
+					},
+				},
+				{
+					id: "003P000001LmKxHIAV",
+					City__r: {
+						Name: "London",
+					},
+				},
+				{
+					id: "003P000001LmKxHWFR",
+					City__r: {
+						Name: "Paris",
+					},
+				},
+				{
+					id: "003P000001LmKxHIZZ",
+					City__r: {
+						Name: "New York",
+					},
+				},
+			];
+
+			console.log(cities);
+			let selectOptions = cities.map(function (item) {
+				console.log(item);
+				console.log(item.City__r);
+				return {
+					value: item.id,
+					label: item.City__r.Name,
+				};
+			});
+			console.log(selectOptions);
+
+			console.log("/n========== USING FILTER ==========");
+			let filteredSelectOptions = selectOptions.filter(function (item) {
+				return item.label.toLowerCase().includes("a");
+			});
+
+			console.log(filteredSelectOptions);
+		</script>
+		<script src="../../assetsExercises/demoHelper.js"></script>
+	</body>
 </html>

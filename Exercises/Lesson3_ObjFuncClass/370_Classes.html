@@ -1,45 +1,43 @@
 <html>
-    <head>
-        <title>Classes</title>
-    </head>
-    <body>
-        <div class="slds-text-heading_large">Classes</div>
-        <div class="instructions">Please view the results in the console log.</div>
-        <script>
-            console.log('Begin Classes demo');
-            debugger; 
-      
-            class Product {
-                constructor(name, brand) {
-                    this.name = name;
-                    this.brand = brand;
-                }
-                printDetails() {
-                    console.log(`Product Name: ${this.name} ........ Brand: ${this.brand}`);
-                }
-            }
-           
-            class Television extends Product {
-                constructor(name, brand, size) {
-                    super(name, brand);
-                    this.size = size;
-                }
-                
-                printDetails() {
-                    super.printDetails();
-                    console.log(`TV size: ${this.size}`);
-                }
-            }
+	<head>
+		<title>Classes</title>
+	</head>
+	<body>
+		<div class="slds-text-heading_large">Classes</div>
+		<div class="instructions">Please view the results in the console log.</div>
+		<script>
+			console.log("Begin Classes demo");
+			debugger;
 
-            let SamsungTV = new Television('SuperDuper TV', 'Samsung', '55 inch');
-            let SonyTV = new Television('Awesome TV', 'Sony', '70 inch');
-            let universalRemote = new Product('Universal Remote Control', 'Sharp');
-            SamsungTV.printDetails();
-            SonyTV.printDetails();
-            universalRemote.printDetails();
+			class Product {
+				constructor(name, brand) {
+					this.name = name;
+					this.brand = brand;
+				}
+				printDetails() {
+					console.log(`Product Name: ${this.name} ........ Brand: ${this.brand}`);
+				}
+			}
 
+			class Television extends Product {
+				constructor(name, brand, size) {
+					super(name, brand);
+					this.size = size;
+				}
 
-        </script>
-        <script  src="../../assetsExercises/demoHelper.js"></script>
-    </body>
+				printDetails() {
+					super.printDetails();
+					console.log(`TV size: ${this.size}`);
+				}
+			}
+
+			let SamsungTV = new Television("SuperDuper TV", "Samsung", "55 inch");
+			let SonyTV = new Television("Awesome TV", "Sony", "70 inch");
+			let universalRemote = new Product("Universal Remote Control", "Sharp");
+			SamsungTV.printDetails();
+			SonyTV.printDetails();
+			universalRemote.printDetails();
+		</script>
+		<script src="../../assetsExercises/demoHelper.js"></script>
+	</body>
 </html>

@@ -1,48 +1,48 @@
 <html>
-    <head>
-        <title>Prototypes</title>
-    </head>
-    <body>
-        <div class="slds-text-heading_large">Prototypes:</div>
-        <div class="instructions">Please view the results in the console log.</div>
+	<head>
+		<title>Prototypes</title>
+	</head>
+	<body>
+		<div class="slds-text-heading_large">Prototypes:</div>
+		<div class="instructions">Please view the results in the console log.</div>
 
-        <script>
-            console.log('Begin Prototypes demo');
-            debugger;
+		<script>
+			console.log("Begin Prototypes demo");
+			debugger;
 
-            function Product(brand) {
-                this.brand = brand;
-                this.dateCreated = new Date();
-            } 
-            Product.prototype.printDetails = function() {
-                console.log(`Product brand : ${this.brand}`);
-            }
-            Product.prototype.printDateCreated = function() {
-                console.log(`This product was created on ${this.dateCreated.toDateString()}`);
-            }
-        
-            function TV(brand, size) {
-                //call the parent constructor
-                Product.call(this, brand);
-                //now set unique properties to TV
-                this.size = size;
-            }
+			function Product(brand) {
+				this.brand = brand;
+				this.dateCreated = new Date();
+			}
+			Product.prototype.printDetails = function () {
+				console.log(`Product brand : ${this.brand}`);
+			};
+			Product.prototype.printDateCreated = function () {
+				console.log(`This product was created on ${this.dateCreated.toDateString()}`);
+			};
 
-            //Tell TV to use Product as its Prototype ... similar to extends for a class
-            TV.prototype = Object.create(Product.prototype);
-            TV.prototype.printDetails = function() {
-                //call a method from the 'parent' class
-                Product.prototype.printDetails.call(this);
-                console.log(`TV ${this.size}`);
-            }
+			function TV(brand, size) {
+				//call the parent constructor
+				Product.call(this, brand);
+				//now set unique properties to TV
+				this.size = size;
+			}
 
-            let SamsungTV = new TV('Samsung', '55 inch');
-            let SonyTV = new TV('Sony', '70 inch');
+			//Tell TV to use Product as its Prototype ... similar to extends for a class
+			TV.prototype = Object.create(Product.prototype);
+			TV.prototype.printDetails = function () {
+				//call a method from the 'parent' class
+				Product.prototype.printDetails.call(this);
+				console.log(`TV ${this.size}`);
+			};
 
-            SamsungTV.printDetails();
-            SonyTV.printDetails();
+			let SamsungTV = new TV("Samsung", "55 inch");
+			let SonyTV = new TV("Sony", "70 inch");
 
-            /* let's look at how for .. in loops include inherited enumberable props
+			SamsungTV.printDetails();
+			SonyTV.printDetails();
+
+			/* let's look at how for .. in loops include inherited enumberable props
              the loop will show:
                 --(TV) size property                     
                 --(TV) printDetails method 
@@ -52,11 +52,10 @@
                 
                 Question: why do you think it doesn't show Product prototype's printDetails method?
              */
-            for (let prop in SamsungTV) {	
-                console.log(`looping over SamsungTV: ${prop} => ${SamsungTV[prop]}`);
-            }
-            
-        </script>
-        <script  src="../../assetsExercises/demoHelper.js"></script>
-    </body>
+			for (let prop in SamsungTV) {
+				console.log(`looping over SamsungTV: ${prop} => ${SamsungTV[prop]}`);
+			}
+		</script>
+		<script src="../../assetsExercises/demoHelper.js"></script>
+	</body>
 </html>

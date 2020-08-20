@@ -1,194 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<title>Vocabulary Builder</title>
+		<link rel="stylesheet" type="text/css" href="../../_lightningDesignSystem/styles/salesforce-lightning-design-system.css" />
+		<link rel="stylesheet" type="text/css" href="../../assetsExercises/appStyles.css" />
+		<script type="module" defer src="999_Final_vocabBuilder.js"></script>
+	</head>
 
-<head>
-	<title>Vocabulary Builder</title>
-	<link rel="stylesheet" type="text/css"
-		href="../../_lightningDesignSystem/styles/salesforce-lightning-design-system.css" />
-	<link rel="stylesheet" type="text/css" href="../../assetsExercises/appStyles.css" />
-	<script type="module" defer src="999_Final_vocabBuilder.js"></script>
-</head>
+	<body>
+		<div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_warning" role="alert">
+			<h2>Unlike all other demos, the final project is not core to studying for the exam.</h2>
+		</div>
 
-<body>
+		<div class="slds-grid slds-wrap slds-container_x-large centerMe">
+			<div class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-p-around_small">
+				<!-- header -->
+				<header class="slds-modal__header">
+					<img class="astro" src="../../_lightningDesignSystem/images/astro.png" />
+					<h2 class="slds-text-heading_medium">
+						Salesforce Vocabulary Builder
+					</h2>
+					<p class="slds-m-top_x-small">
+						Learn
+						<a
+							href="https://developer.salesforce.com/docs/atlas.en-us.salesforce_pubs_style_guide.meta/salesforce_pubs_style_guide/glossary_master.htm"
+							target="_blank"
+							>Salesforce Terms</a
+						>
+						with Practice!
+					</p>
+				</header>
 
-	<div class="slds-notify slds-notify_alert slds-theme_alert-texture slds-theme_warning" role="alert">
-		<h2>Unlike all other demos, the final project is not core to studying for the exam.</h2>
-	</div>
-
-	<div class="slds-grid slds-wrap slds-container_x-large centerMe">
-		<div class="slds-col slds-size_12-of-12 slds-medium-size_8-of-12 slds-p-around_small">
-
-			<!-- header -->
-			<header class="slds-modal__header">
-				<img class="astro" src="../../_lightningDesignSystem/images/astro.png">
-				<h2 class="slds-text-heading_medium">
-					Salesforce Vocabulary Builder
-				</h2>
-				<p class="slds-m-top_x-small">Learn <a
-						href="https://developer.salesforce.com/docs/atlas.en-us.salesforce_pubs_style_guide.meta/salesforce_pubs_style_guide/glossary_master.htm"
-						target="_blank">Salesforce Terms</a> with Practice!</p>
-			</header>
-
-			<!-- Filter box -->
-			<div class="slds-p-vertical_x-small slds-p-horizontal_large slds-theme_shade">
-				<div class="slds-form-element">
-					<label class="slds-form-element__label" for="text-input-id-1">Filter Terms</label>
-					<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
-						<input name="filter" type="text" id="text-input-id-1" placeholder="Enter a Search Term"
-							class="slds-input" />
+				<!-- Filter box -->
+				<div class="slds-p-vertical_x-small slds-p-horizontal_large slds-theme_shade">
+					<div class="slds-form-element">
+						<label class="slds-form-element__label" for="text-input-id-1">Filter Terms</label>
+						<div class="slds-form-element__control slds-input-has-icon slds-input-has-icon_right">
+							<input name="filter" type="text" id="text-input-id-1" placeholder="Enter a Search Term" class="slds-input" />
+						</div>
 					</div>
+					<div class="termCount slds-text-title slds-m-top_x-small" aria-live="polite"></div>
 				</div>
-				<div class="termCount slds-text-title slds-m-top_x-small" aria-live="polite">
-				</div>
-			</div>
 
-			<!-- Grid -->
-			<div class="slds-scrollable slds-grow">
-				<div class="slds-scrollable_none">
-					<table class="slds-table slds-no-row-hover slds-table_bordered slds-table_fixed-layout "
-						role="grid">
-						<thead>
-							<tr class="slds-line-height_reset">
-								<th scope="col" style="width: 4.75rem;"></th>
-								<th aria-label="Name" aria-sort="none" scope="col" style="width: 10rem;">
-									<a class="slds-th__action slds-text-link_reset" role="button" tabindex="-1">
+				<!-- Grid -->
+				<div class="slds-scrollable slds-grow">
+					<div class="slds-scrollable_none">
+						<table class="slds-table slds-no-row-hover slds-table_bordered slds-table_fixed-layout" role="grid">
+							<thead>
+								<tr class="slds-line-height_reset">
+									<th scope="col" style="width: 4.75rem;"></th>
+									<th aria-label="Name" aria-sort="none" scope="col" style="width: 10rem;">
+										<a class="slds-th__action slds-text-link_reset" role="button" tabindex="-1">
+											<div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
+												<span class="slds-truncate" title="Term">Term</span>
+											</div>
+										</a>
+									</th>
+									<th aria-label="Definition" aria-sort="none" scope="col">
 										<div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
-											<span class="slds-truncate" title="Term">Term</span>
+											<span class="slds-truncate" title="Definition">Definition</span>
+											<span class="slds-icon_container slds-icon-utility-arrowdown"> </span>
 										</div>
-									</a>
-								</th>
-								<th aria-label="Definition" aria-sort="none" scope="col">
-									<div class="slds-grid slds-grid_vertical-align-center slds-has-flexi-truncate">
-										<span class="slds-truncate" title="Definition">Definition</span>
-										<span class="slds-icon_container slds-icon-utility-arrowdown">
-										</span>
-									</div>
-								</th>
-							</tr>
-						</thead>
-						<tbody>
-							<!-- rows will go here-->
-						</tbody>
-					</table>
+									</th>
+								</tr>
+							</thead>
+							<tbody>
+								<!-- rows will go here-->
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
-		</div>
 
-
-		<div class="slds-col slds-size_12-of-12 slds-medium-size_4-of-12 slds-p-around_small">
-
-			<!-- ADD A TERM card-->
-			<article class="slds-card">
-				<div class="slds-card__header slds-grid">
-					<header class="slds-media slds-media_center slds-has-flexi-truncate">
-						<div class="slds-media__body">
-							<h2 class="slds-card__header-title">
-								<a href="javascript:void(0);" class="slds-card__header-link slds-truncate"
-									title="Accounts">
-									<span>Add a Term</span>
-								</a>
-							</h2>
+			<div class="slds-col slds-size_12-of-12 slds-medium-size_4-of-12 slds-p-around_small">
+				<!-- ADD A TERM card-->
+				<article class="slds-card">
+					<div class="slds-card__header slds-grid">
+						<header class="slds-media slds-media_center slds-has-flexi-truncate">
+							<div class="slds-media__body">
+								<h2 class="slds-card__header-title">
+									<a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Accounts">
+										<span>Add a Term</span>
+									</a>
+								</h2>
+							</div>
+						</header>
+					</div>
+					<form>
+						<div class="slds-card__body slds-card__body_inner">
+							<div class="slds-form">
+								<div class="slds-form-element slds-form-element_stacked">
+									<label class="slds-form-element__label" for="stacked-input-id-01">Term</label>
+									<div class="slds-form-element__control">
+										<input name="term" type="text" id="stacked-input-id-01" placeholder="Enter the term" class="slds-input" />
+									</div>
+								</div>
+								<div class="slds-form-element slds-form-element_stacked">
+									<label class="slds-form-element__label" for="stacked-input-id-02">Definition</label>
+									<div class="slds-form-element__control">
+										<textarea
+											name="definition"
+											id="stacked-input-id-02"
+											placeholder="Enter the definition"
+											class="slds-textarea"
+										></textarea>
+									</div>
+								</div>
+							</div>
 						</div>
-					</header>
-				</div>
-				<form>
+						<footer class="slds-card__footer">
+							<button type="button" class="slds-button slds-button_neutral cancel">
+								Cancel
+							</button>
+							<button type="button" class="slds-button slds-button_brand save">
+								Save
+							</button>
+						</footer>
+					</form>
+				</article>
+
+				<!-- LOAD TERMS FROM URL card-->
+				<article class="slds-card">
+					<div class="slds-card__header slds-grid">
+						<header class="slds-media slds-media_center slds-has-flexi-truncate">
+							<div class="slds-media__body">
+								<h2 class="slds-card__header-title">
+									<a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Accounts">
+										<span>Load Terms from URL</span>
+									</a>
+								</h2>
+							</div>
+						</header>
+					</div>
+					<form>
+						<div class="slds-card__body slds-card__body_inner">
+							<div class="slds-form">
+								<div class="slds-form-element slds-form-element_stacked">
+									<div class="slds-form-element__control">
+										<textarea name="dataUrl" type="text" placeholder="Enter the URL" class="slds-textarea"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+						<footer class="slds-card__footer">
+							<button name="loadFromURL" type="button" class="slds-button slds-button_brand">
+								Load Terms from URL
+							</button>
+						</footer>
+					</form>
+				</article>
+
+				<!-- LOAD TERMS FROM LOCAL STORAGE card-->
+				<article class="slds-card">
+					<div class="slds-card__header slds-grid">
+						<header class="slds-media slds-media_center slds-has-flexi-truncate">
+							<div class="slds-media__body">
+								<h2 class="slds-card__header-title">
+									<a href="javascript:void(0);" class="slds-card__header-link slds-truncate" title="Accounts">
+										<span>Work with Local Storage</span>
+									</a>
+								</h2>
+							</div>
+						</header>
+					</div>
 					<div class="slds-card__body slds-card__body_inner">
-						<div class="slds-form">
-							<div class="slds-form-element slds-form-element_stacked">
-								<label class="slds-form-element__label" for="stacked-input-id-01">Term</label>
-								<div class="slds-form-element__control">
-									<input name="term" type="text" id="stacked-input-id-01" placeholder="Enter the term"
-										class="slds-input" />
-								</div>
-							</div>
-							<div class="slds-form-element slds-form-element_stacked">
-								<label class="slds-form-element__label" for="stacked-input-id-02">Definition</label>
-								<div class="slds-form-element__control">
-									<textarea name="definition" id="stacked-input-id-02"
-										placeholder="Enter the definition" class="slds-textarea"></textarea>
-								</div>
-							</div>
-						</div>
+						<textarea name="localStorageTerms" type="text" disabled class="slds-textarea"></textarea>
 					</div>
 					<footer class="slds-card__footer">
-						<button type="button" class="slds-button slds-button_neutral cancel">
-							Cancel
+						<button name="loadLocalStorage" type="button" class="slds-button slds-button_brand">
+							Load Terms
 						</button>
-						<button type="button" class="slds-button slds-button_brand save">
-							Save
+						<button name="clearLocalStorage" type="button" class="slds-button slds-button_destructive">
+							Clear Storage
 						</button>
-					</footer>
-				</form>
-			</article>
-
-			<!-- LOAD TERMS FROM URL card-->
-			<article class="slds-card">
-				<div class="slds-card__header slds-grid">
-					<header class="slds-media slds-media_center slds-has-flexi-truncate">
-						<div class="slds-media__body">
-							<h2 class="slds-card__header-title">
-								<a href="javascript:void(0);" class="slds-card__header-link slds-truncate"
-									title="Accounts">
-									<span>Load Terms from URL</span>
-								</a>
-							</h2>
-						</div>
-					</header>
-				</div>
-				<form>
-					<div class="slds-card__body slds-card__body_inner">
-						<div class="slds-form">
-							<div class="slds-form-element slds-form-element_stacked">
-								<div class="slds-form-element__control">
-									<textarea name="dataUrl" type="text" 
-										placeholder="Enter the URL" class="slds-textarea"></textarea>
-
-								</div>
-							</div>
-						</div>
-					</div>
-					<footer class="slds-card__footer">
-						<button name="loadFromURL" type="button" class="slds-button slds-button_brand">
-							Load Terms from URL
+						<button name="saveLocalStorage" type="button" class="slds-button slds-button_success">
+							Save Terms
 						</button>
 					</footer>
-				</form>
-			</article>
-
-			<!-- LOAD TERMS FROM LOCAL STORAGE card-->
-			<article class="slds-card">
-				<div class="slds-card__header slds-grid">
-					<header class="slds-media slds-media_center slds-has-flexi-truncate">
-						<div class="slds-media__body">
-							<h2 class="slds-card__header-title">
-								<a href="javascript:void(0);" class="slds-card__header-link slds-truncate"
-									title="Accounts">
-									<span>Work with Local Storage</span>
-								</a>
-							</h2>
-						</div>
-					</header>
-				</div>
-				<div class="slds-card__body slds-card__body_inner">
-					<textarea name="localStorageTerms" type="text" disabled class="slds-textarea"></textarea>
-				</div>
-				<footer class="slds-card__footer">
-
-					<button name="loadLocalStorage" type="button" class="slds-button slds-button_brand">
-						Load Terms
-					</button>
-					<button name="clearLocalStorage" type="button" class="slds-button slds-button_destructive">
-						Clear Storage
-					</button>
-					<button name="saveLocalStorage" type="button" class="slds-button slds-button_success">
-						Save Terms
-					</button>
-				</footer>
-
-			</article>
+				</article>
+			</div>
 		</div>
-	</div>
-	<script src="../../assetsExercises/demoHelper.js"></script>
-</body>
-
+		<script src="../../assetsExercises/demoHelper.js"></script>
+	</body>
 </html>

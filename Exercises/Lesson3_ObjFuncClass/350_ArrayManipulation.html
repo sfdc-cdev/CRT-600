@@ -1,74 +1,80 @@
 <html>
-    <head>
-        <title>Work With Arrays</title>
-    </head>
-    <body>
-        <div class="slds-text-heading_large">Work With Arrays</div>
-        <div class="instructions">Please view the results in the console log.</div>
-        <script>
-            console.log('Begin Array Manipulation demo');
-            debugger;
-            let myArray = ['one','two','three', 'four'];
+	<head>
+		<title>Work With Arrays</title>
+	</head>
+	<body>
+		<div class="slds-text-heading_large">Work With Arrays</div>
+		<div class="instructions">Please view the results in the console log.</div>
+		<script>
+			console.log("Begin Array Manipulation demo");
+			debugger;
+			let myArray = ["one", "two", "three", "four"];
 
-            console.log('========== PUSH ==========')
-            myArray.push('five');
-            console.log('myArray after push: ', myArray); 
+			console.log("========== PUSH ==========");
+			myArray.push("five");
+			console.log("myArray after push: ", myArray);
 
-            console.log('\n========== POP  ==========')
-            let lastItem = myArray.pop();
-            console.log('popped item:', lastItem);
-            console.log('myArray after pop: ', myArray); 
+			console.log("\n========== POP  ==========");
+			let lastItem = myArray.pop();
+			console.log("popped item:", lastItem);
+			console.log("myArray after pop: ", myArray);
 
-            console.log('\n========== SHIFT ==========')
-            let firstItem = myArray.shift();
-            console.log('shifted item:', firstItem);
-            console.log('myArray after shift: ', myArray);  
+			console.log("\n========== SHIFT ==========");
+			let firstItem = myArray.shift();
+			console.log("shifted item:", firstItem);
+			console.log("myArray after shift: ", myArray);
 
-            console.log('\n========== SLICE ==========')
-            let newArray = myArray.slice(1,3);
-            console.log('new Array:', newArray);  
-            console.log('myArray after slice: ', myArray); 
+			console.log("\n========== SLICE ==========");
+			let newArray = myArray.slice(1, 3);
+			console.log("new Array:", newArray);
+			console.log("myArray after slice: ", myArray);
 
-            console.log('\n========== SPLICE ==========')
-            myArray.splice(1,1,'hello'); 
-            console.log('myArray after slice: ', myArray); 
+			console.log("\n========== SPLICE ==========");
+			myArray.splice(1, 1, "hello");
+			console.log("myArray after slice: ", myArray);
 
-            console.log('\n========== FLATTEN ==========')
-            let my2dArray = [ ['a','b'], [1,2,3], ['c','d']];
-            let myFlattenedArray = my2dArray.flat();
-            console.log(myFlattenedArray);  
+			console.log("\n========== FLATTEN ==========");
+			let my2dArray = [
+				["a", "b"],
+				[1, 2, 3],
+				["c", "d"],
+			];
+			let myFlattenedArray = my2dArray.flat();
+			console.log(myFlattenedArray);
 
-            console.log('\n========== FLATTEN MORE THAN ONE LEVEL==========')
-            let my3dArray = [ ['a','b'], [1,['e','f','g'],3], ['c','d']];
-            let somewhatFlat = my3dArray.flat(1);
-            let veryFlat = my3dArray.flat(2);
-            console.log(somewhatFlat);  
-            console.log(veryFlat);  
+			console.log("\n========== FLATTEN MORE THAN ONE LEVEL==========");
+			let my3dArray = [
+				["a", "b"],
+				[1, ["e", "f", "g"], 3],
+				["c", "d"],
+			];
+			let somewhatFlat = my3dArray.flat(1);
+			let veryFlat = my3dArray.flat(2);
+			console.log(somewhatFlat);
+			console.log(veryFlat);
 
+			console.log("\n========== ARRAY.FROM, WITH AND WITHOUT MAP ==========");
+			let letterArray = Array.from("abc");
+			console.log(letterArray); // ['a','b','c']
 
-            console.log('\n========== ARRAY.FROM, WITH AND WITHOUT MAP ==========')
-            let letterArray = Array.from('abc'); 
-            console.log(letterArray); // ['a','b','c']
+			let mappedLetterArray = Array.from("abc", (x) => "item_" + x);
+			console.log(mappedLetterArray); // ['item_a','item_b','item_c']
 
-            let mappedLetterArray=Array.from('abc', x => 'item_' + x);
-            console.log(mappedLetterArray); // ['item_a','item_b','item_c']
+			console.log("\n========== Spread Syntax ==========");
+			function spreadTest(param1, param2, param3) {
+				console.log(`params: ${param1} ${param2} ${param3}`);
+			}
+			let nums = [5, 6, 7];
+			spreadTest(...nums);
+			let numsCopy = [3, 4, ...nums, 8];
+			console.log("copied nums", numsCopy);
 
-            console.log('\n========== Spread Syntax ==========')
-            function spreadTest(param1,param2,param3) {
-                console.log(`params: ${param1} ${param2} ${param3}`);
-            }
-            let nums = [5,6,7]
-            spreadTest(...nums);
-            let numsCopy = [3,4, ...nums, 8,];
-            console.log('copied nums', numsCopy);
-
-            console.log('\n========== Rest Params ==========')
-            function restParamTest(...params) {
-                console.log(`params: ${params}`);
-            }
-            restParamTest(1,2,3,4,5);
-
-        </script>
-        <script  src="../../assetsExercises/demoHelper.js"></script>
-    </body>
+			console.log("\n========== Rest Params ==========");
+			function restParamTest(...params) {
+				console.log(`params: ${params}`);
+			}
+			restParamTest(1, 2, 3, 4, 5);
+		</script>
+		<script src="../../assetsExercises/demoHelper.js"></script>
+	</body>
 </html>
