@@ -9,4 +9,4 @@
 let x = 4;
 let y = 5;
 debugger;
-let z = 6
+let z = 6;
