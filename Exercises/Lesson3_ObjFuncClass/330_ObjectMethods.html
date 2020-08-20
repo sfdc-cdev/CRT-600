@@ -1,67 +1,65 @@
 <html>
-    <head>
-        <title>Object Methods</title>
-    </head>
-    <body>
-        <div class="slds-text-heading_large">Object Methods</div>
-        <div class="instructions">Please view the results in the console log.</div>
-        <script>
-            console.log('Begin Object Methods demo');
-            debugger;
-            
-            console.log('==========Object.create with prototype==========');
-            let obj1 = Object.create(Object.prototype);
-            console.log('First object: ', obj1);
+	<head>
+		<title>Object Methods</title>
+	</head>
+	<body>
+		<div class="slds-text-heading_large">Object Methods</div>
+		<div class="instructions">Please view the results in the console log.</div>
+		<script>
+			console.log("Begin Object Methods demo");
+			debugger;
 
-            console.log('\n==========Object.defineProperty==========');
-            let obj2 = Object.create(Object.prototype);
-            Object.defineProperty(obj2, 'term', {
-                value: 'Astro',
-            });
-            Object.defineProperty(obj2, 'description', {
-                value: 'A famous Salesforce character',
-                enumerable: true
-            });
-            obj2.height = '1 meter';
-            console.log('obj2 after defining properties', obj2);
-            console.log('Keys of obj2 after defining properties: ', Object.keys(obj2))
-            console.log('Values of obj2 after defining properties: ', Object.values(obj2))
-            
-            /*  
+			console.log("==========Object.create with prototype==========");
+			let obj1 = Object.create(Object.prototype);
+			console.log("First object: ", obj1);
+
+			console.log("\n==========Object.defineProperty==========");
+			let obj2 = Object.create(Object.prototype);
+			Object.defineProperty(obj2, "term", {
+				value: "Astro",
+			});
+			Object.defineProperty(obj2, "description", {
+				value: "A famous Salesforce character",
+				enumerable: true,
+			});
+			obj2.height = "1 meter";
+			console.log("obj2 after defining properties", obj2);
+			console.log("Keys of obj2 after defining properties: ", Object.keys(obj2));
+			console.log("Values of obj2 after defining properties: ", Object.values(obj2));
+
+			/*  
                 QUESTIONS: 
                 1.  Why doesn't term show up in Object.keys / Object.values? 
                 2.  Does the property still exist?
             */
 
-            console.log('\n==========Object.preventExtension==========');
-            let obj3 = {
-                term: "Astro"
-            }
-            Object.preventExtensions(obj3);
-            obj3.description = "A famous Salesforce character";
-            console.log('description of obj3 is ', obj3.description);
+			console.log("\n==========Object.preventExtension==========");
+			let obj3 = {
+				term: "Astro",
+			};
+			Object.preventExtensions(obj3);
+			obj3.description = "A famous Salesforce character";
+			console.log("description of obj3 is ", obj3.description);
 
-            /*  
+			/*  
                 QUESTIONS: 
                 1. Why doesn't description show up in the list of keys? 
             */
 
-            console.log('\n==========Object.assign==========');
-            let o4 = {
-                term: "Astro",
-                description: "A famous Salesforce character"
-            }
-            let o5 = {
-                currentCity: "San Francisco",
-                currentCountry: "United States"
-            }
-            let o6 = Object.assign (o4, o5);
+			console.log("\n==========Object.assign==========");
+			let o4 = {
+				term: "Astro",
+				description: "A famous Salesforce character",
+			};
+			let o5 = {
+				currentCity: "San Francisco",
+				currentCountry: "United States",
+			};
+			let o6 = Object.assign(o4, o5);
 
-            console.log(o6);
-            console.log('Are o4 and o6 the same? ', (o4 === o6));
-
-            
-        </script>
-        <script  src="../../assetsExercises/demoHelper.js"></script>
-    </body>
+			console.log(o6);
+			console.log("Are o4 and o6 the same? ", o4 === o6);
+		</script>
+		<script src="../../assetsExercises/demoHelper.js"></script>
+	</body>
 </html>

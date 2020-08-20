@@ -1,41 +1,37 @@
 <html>
-    <head>
-        <title>Reduce</title>
-    </head>
-    <body>
-        <div class="slds-text-heading_large">Reduce</div>
-        <div class="instructions">Please view the results in the console log.</div>
-        <script>
-            console.log('Begin Reduce demo');
-            debugger;
+	<head>
+		<title>Reduce</title>
+	</head>
+	<body>
+		<div class="slds-text-heading_large">Reduce</div>
+		<div class="instructions">Please view the results in the console log.</div>
+		<script>
+			console.log("Begin Reduce demo");
+			debugger;
 
-            console.log('==========PRODUCT==========');
-            let numbers = [10, 15, 3];
-            let mult = function(acc, currentVal) { 
-                return currentVal * acc;
-            }
-            let product = numbers.reduce(mult);
-            console.log('product: ' + product);
+			console.log("==========PRODUCT==========");
+			let numbers = [10, 15, 3];
+			let mult = function (acc, currentVal) {
+				return currentVal * acc;
+			};
+			let product = numbers.reduce(mult);
+			console.log("product: " + product);
 
-            console.log('\n==========PRODUCT WITH INITIAL VALUE==========');
-            let numbers2 = [10, 15, 3];
-            let product2 = numbers2.reduce(function(acc,currentVal) {
-                return acc * currentVal;
-            }, 2);
-            console.log('product with initial val: ' + product2);
+			console.log("\n==========PRODUCT WITH INITIAL VALUE==========");
+			let numbers2 = [10, 15, 3];
+			let product2 = numbers2.reduce(function (acc, currentVal) {
+				return acc * currentVal;
+			}, 2);
+			console.log("product with initial val: " + product2);
 
-            console.log('\n==========SUM WITH ARROW FUNCTION==========');
-            let sum = numbers2.reduce((acc,currentVal) => acc + currentVal);
-            console.log('sum: ' + sum);
+			console.log("\n==========SUM WITH ARROW FUNCTION==========");
+			let sum = numbers2.reduce((acc, currentVal) => acc + currentVal);
+			console.log("sum: " + sum);
 
-            let words=["Hello", "World", "I", "Like", "Chocolate", "Pudding"];
-            let longestWord = words.reduce((acc,currentVal) => (currentVal.length > acc.length) ? currentVal : acc);
-            console.log('longestWord: ' + longestWord);  
-
-
-
-
-        </script>
-        <script  src="../../assetsExercises/demoHelper.js"></script>
-    </body>
+			let words = ["Hello", "World", "I", "Like", "Chocolate", "Pudding"];
+			let longestWord = words.reduce((acc, currentVal) => (currentVal.length > acc.length ? currentVal : acc));
+			console.log("longestWord: " + longestWord);
+		</script>
+		<script src="../../assetsExercises/demoHelper.js"></script>
+	</body>
 </html>

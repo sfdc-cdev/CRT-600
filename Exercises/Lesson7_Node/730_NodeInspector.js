@@ -3,5 +3,5 @@
 */
 let x = 25;
 let y = 2;
-console.log('\n hello Node \n');
+console.log("\n hello Node \n");
 console.log(` x: ${x} y: ${y} \n`);
