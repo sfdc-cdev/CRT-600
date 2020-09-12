@@ -91,8 +91,9 @@
 				console.error("Error accessing variable a7 declared in createAndOutputNums: ", e);
 			}
 
-			var a9 = "My value was set outside and will change";
-			var a9_redeclared = "My value was set outside and will not change";
+			//'redeclared' means we will use the var keyword again inside the function
+			var a9 = "Initialized";
+			var a9_redeclared = "Initialized";	
 
 			function changeNums() {
 				// global variables are accessible and modifiable inside of functions.
@@ -100,13 +101,13 @@
 				console.log("Accessing a9 inside the changeNums function: ", a9);
 
 				//Now let's change the two a9 variables. We will examine the results of the change outside the function.
-				a9 = "My value was changed inside the function";
-				var a9_redeclared = "My value was changed inside the function";
+				a9 = "CHANGED";
+				var a9_redeclared = "CHANGED";	//note the var keyword! 
 			}
 			changeNums();
 
 			//the change to a9 persists
-			//the change to a9_redeclared does not persist because it had been redeclared inside the function
+			//the change to a9_redeclared does not persist because it was redeclared inside the function
 			console.log("After the function call, a9 is: ", a9);
 			console.log("After the function call, a9_redeclared is: ", a9_redeclared);
 		</script>
