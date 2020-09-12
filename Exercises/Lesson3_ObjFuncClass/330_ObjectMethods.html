@@ -38,12 +38,14 @@
 				term: "Astro",
 			};
 			Object.preventExtensions(obj3);
-			obj3.description = "A famous Salesforce character";
+			obj3.description = "ADDED";
 			console.log("description of obj3 is ", obj3.description);
 
 			/*  
                 QUESTIONS: 
-                1. Why doesn't description show up in the list of keys? 
+				1. Why doesn't description show up in the list of keys? 
+				2. What change could we make so that it would throw an error rather than fail silently
+				   when we try to add the description property after Object.preventExtensions was called?
             */
 
 			console.log("\n==========Object.assign==========");
