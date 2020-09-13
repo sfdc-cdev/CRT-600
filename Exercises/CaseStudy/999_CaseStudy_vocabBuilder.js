@@ -1,7 +1,7 @@
 /***** NOTE: The final Project isn't core to studying for the exam *****/
 
 //working with modules
-import { initialDataURL, TermDictionary } from "./999_Final_vocabBuilderModule.js";
+import { initialDataURL, TermDictionary } from "./999_CaseStudy_vocabBuilderModule.js";
 
 const myDictionary = new TermDictionary();
 
