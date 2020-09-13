@@ -31,7 +31,7 @@ let addNavigation = function () {
 		"Lesson5_Debugging/500_WorkWithConsole.html",
 		"Lesson6_Async/600_Promises.html",
 		"Lesson6_Async/610_AsyncAwait.html",
-		"Final/999_Final_vocabBuilder.html",
+		"Final/999_CaseStudy_vocabBuilder.html",
 	];
 
 	let s = '<option value="">Select a Demo</option>';
