@@ -1,4 +1,4 @@
-/***** NOTE: The final Project isn't core to studying for the exam *****/
+/***** NOTE: The case study isn't core to studying for the exam *****/
 
 //working with modules
 import { initialDataURL, TermDictionary } from "./999_CaseStudy_vocabBuilderModule.js";

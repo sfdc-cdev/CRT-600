@@ -1,4 +1,4 @@
-/***** NOTE: The final Project isn't core to studying for the exam *****/
+/***** NOTE: The case study isn't core to studying for the exam *****/
 
 const initialDataURL = "https://raw.githubusercontent.com/sfdc-cdev/CRT-600/master/assetsExercises/sampleData.json";
 
