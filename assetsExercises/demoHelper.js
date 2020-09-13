@@ -55,7 +55,7 @@ let addNavigation = function () {
 	document.querySelector("body").insertAdjacentElement("afterbegin", document.createElement("br"));
 	document.querySelector("body").insertAdjacentElement("afterbegin", div);
 
-	//inject the demo stylesheet and lightning design system for all files other than the final vocab builder
+	//inject the demo stylesheet and lightning design system for all files other than the vocab builder
 	if (!window.location.href.includes("vocabBuilder")) {
 		let slds = document.createElement("link");
 		slds.type = "text/css";
