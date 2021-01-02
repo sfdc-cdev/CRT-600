@@ -21,14 +21,21 @@
 			a2 = 250 / "100";
 			console.log(a2);
 
-			console.log("==========THE && AND || OPERATORS ARE A BIT DIFFERENT FROM SOME LANGUAGES ==========");
-			console.log("Astro" && "Trailblazer");
+			console.log("==========THE LOGICAL OR OPERATOR || RETURNS THE FIRST TRUTHY VALUE IF THERE IS ONE, ELSE IT RETURNS THE LAST OPERAND ==========");
 			console.log("Astro" || "Trailblazer");
 			console.log(4 || false);
+			console.log(0 || null);
+			console.log(null || 0);
+			console.log(Boolean(4) || false);
+
+			console.log("==========THE LOGICAL AND OPERATOR && RETURNS THE FIRST FALSY VALUE IF THERE IS ONE, ELSE IT RETURNS THE LAST OPERAND ==========");
+			console.log("Astro" && "Trailblazer");
 			console.log(4 && false);
+			console.log(4 && null);
 			console.log(4 && true);
 			console.log(true && 4);
-			console.log(Boolean(4) || false);
+
+
 
 			console.log("==========SOMETIMES PEOPLE USE DOUBLE NEGATION (!!) TO CONVERT TO BOOLEAN ==========");
 			let a3 = 10;
