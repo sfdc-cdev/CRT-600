@@ -9,7 +9,7 @@
     </head>
     <body>
         <div class="slds-text-heading_large">Local Storage and Cookies</div>
-        
+
         <div class="instructions">
             <ol>
                 <li>A cookie will show a confirmation dialog until you accept it. </li>
@@ -25,11 +25,11 @@
             <input type="text" name="term">
             <button name="addTerm">Add Term</button>
         </div>
-        
+
         <div class="slds-box slds-m-bottom_small">
             <div class="slds-text-heading_medium">Local Storage</div>
                 <textarea name="localStorageTerms" readonly class="slds-textarea slds-m-bottom_small slds-m-top_small consoleOnPage" placeholder="Contents of Local Storage here"></textarea>
-                
+
                 <button name="loadLocalStorage" type="button" class="slds-button slds-button_brand">
                     Load Terms
                 </button>
@@ -55,7 +55,7 @@
             function initApp() {
                 const btn = document.querySelector('button[name="addTerm"]');
                 const termInput = document.querySelector('input[name="term"]');
-                
+
                 //capture a click anywhere in the ordered list element but only process it if it's an anchor
                 document.querySelector('ol#terms').addEventListener('click', function(event) {
                     if (event.target.tagName.toLowerCase() === 'a') {
@@ -91,11 +91,11 @@
                 /*************LOCAL STORAGE CODE ********************/
                 function displayLocalStorage() {
                     let displayValue = 'Local storage is currently empty.';
-                
+
                     const savedTerms = localStorage.getItem('savedTermData');
                     if (savedTerms && savedTerms.length > 2) {
                         displayValue = savedTerms;
-                    } 
+                    }
                     document.querySelector("textarea[name='localStorageTerms']").value=displayValue;
                 }
 
@@ -108,7 +108,7 @@
                             return `<li><span>${term}</span><a href="#">DELETE</a></li>`;
                         });
                         let listItemsStr=listItemsArray.join('');
-    
+
                         document.querySelector('ol#terms').innerHTML = listItemsStr;
 
                     } else {
@@ -121,9 +121,9 @@
                     displayLocalStorage();
                     alert('local storage cleared');
                 });
-                
+
                 document.querySelector("button[name='saveLocalStorage']").addEventListener('click', function() {
-                    
+
                     let terms = Array.from(document.querySelectorAll('ol#terms li span')).map(function(el) {
                         return el.innerHTML;
                     });
@@ -155,7 +155,7 @@
             }
             document.addEventListener('DOMContentLoaded', initApp);
         </script>
-        
+
         <script src="../../assetsExercises/demoHelper.js"></script>
     </body>
 </html>

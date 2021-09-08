@@ -1,4 +1,4 @@
-/* 
+/*
     From command line: node --inspect-brk Exercises/Lesson7_Node/730_NodeInspector.js
 */
 let x = 25;
