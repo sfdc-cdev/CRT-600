@@ -10,23 +10,23 @@
             debugger;
             let d = new Date();
             console.log('========== STANDARD DATE ==========')
-            console.log(d); 
+            console.log(d);
 
             console.log('\n========== toDateString() ==========')
-            console.log(d.toDateString()); 
+            console.log(d.toDateString());
 
             console.log('\n========== toUTCString() ==========')
-            console.log(d.toUTCString()); 
+            console.log(d.toUTCString());
 
             console.log('\n========== toISOString() ==========')
-            console.log(d.toISOString()); 
+            console.log(d.toISOString());
 
             console.log('\n========== toLocaleDateString() ==========')
             let options = {
                 year: 'numeric',
                 month: 'short'
             }
-            console.log(d.toLocaleDateString('fr-FR', options)); 
+            console.log(d.toLocaleDateString('fr-FR', options));
 
             console.log('\n========== CREATE SPECIFIC DATE ==========')
             d = new Date(2016,6,7);
