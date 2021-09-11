@@ -42,14 +42,14 @@
 			SamsungTV.printDetails();
 			SonyTV.printDetails();
 
-			/* let's look at how for .. in loops include inherited enumberable props
+			/* let's look at how for .. in loops include inherited enumerable props
              the loop will show:
-                --(TV) size property                     
-                --(TV) printDetails method 
-                --(Product) brand property                    
-                --(Product) dateCreated property              
+                --(TV) size property
+                --(TV) printDetails method
+                --(Product) brand property
+                --(Product) dateCreated property
                 --(Product) printDateCreated method
-                
+
                 Question: why do you think it doesn't show Product prototype's printDetails method?
              */
 			for (let prop in SamsungTV) {
